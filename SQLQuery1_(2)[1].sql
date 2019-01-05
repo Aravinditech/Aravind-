@@ -3,7 +3,7 @@ create database market
 use market 
 
 
-create table customer (id int primary key identity , name varchar(50)not null,city varchar not null,
+create table customer (id int primary key identity , name varchar(50)not null,city varchar(50) not null,
 Phoneno bigint not null) 
 
 create table stock( id int  not null, productname varchar(10), unitprice int )
@@ -20,11 +20,7 @@ alter table sales add foreign key (productid) references stock(id)
 alter table personsales add foreign key (salesid) references sales(saleid) 
 alter table stock add quantity int 
 
-alter table customer alter column city varchar(50)  
-
-select * from personsales
-
-alter proc bill @id1 int, @id2 int, @id3 int 
+create proc bill @id1 int, @id2 int, @id3 int 
 as	
 begin 
 declare @id4 int
@@ -43,12 +39,6 @@ else
 print 'unavailable stock' +convert(varchar(50),@id4)
 end
 
-
-delete   personsales
-bill 2,3,4
-
-select * from personsales
-
 alter trigger ab on sales for insert 
  as 
  begin 
@@ -57,8 +47,4 @@ alter trigger ab on sales for insert
  rollback tran
  end
 
- select * into aravind from sales
-
- select * from aravind
- insert into aravind select * from sales column_name 
- drop table aravind 
+select * from sales 
